@@ -12,4 +12,5 @@ public class DefaultController {
         model.addAttribute("message", "World!");
         return "index";
     }
+    
 }

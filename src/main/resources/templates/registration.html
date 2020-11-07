@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/layout :: head(title=${title})" lang="fi">
+        <title>Title</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div th:replace="fragments/layout :: header(title=${title})">
+            Header
+        </div>
+        
+        <div class="container">
+            <form action="#" th:action="@{/registration}" th:object="${account}" method="POST" role="form">
+
+               <div class="form-group">
+                  <label for="name">Nimi</label>
+                  <input type="text" th:field="*{name}" class="form-control" name="name" id="name" placeholder="Nimi">
+                  <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" id="nameHelpBlock" class="form-text text-muted">
+                    Name Virheviesti
+                  </small>
+               </div>
+               <div class = "form-group">
+                  <label for="username">Käyttäjätunnus</label>
+                  <input type="text" th:field="*{username}" class="form-control" name="username" id="username" placeholder="Käyttäjätunnus">
+                  <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" id="usernameHelpBlock" class="form-text text-muted">
+                    Username Virheviesti
+                  </small>               
+               </div>
+               <div class="form-group">
+                  <label for="password">Salasana</label>
+                  <input type="password" th:field="*{password}" class="form-control" name="password" id="password" placeholder="Salasana">
+                  <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" id="passwordHelpBlock" class="form-text text-muted">
+                    Password Virheviesti
+                  </small>                
+               </div>
+               <div class="form-group">
+                  <label for="urlIdentifier">Profiilin osoite</label>
+                  <input type="text" th:field="*{urlIdentifier}" class="form-control" name="urlIdentifier" id="urlIdentifier" placeholder="Profiilin osoite">
+                  <small th:if="${#fields.hasErrors('urlIdentifier')}" th:errors="*{urlIdentifier}" id="urlIdentifierErrorHelpBlock" class="form-text text-muted">
+                    UrlIdentifier Virheviesti
+                  </small>                   
+                  <small id="urlIdentifierHelpBlock" class="form-text text-muted">
+                    Profiilisi URL-osoite muodostetaan antamasi tunnuksen perusteella, esimerkiksi: 
+                    <span th:text="${url} + 'users/profiilin-osoite'">URL</span>.
+                  </small>
+               </div>
+
+               <button type="submit" class="btn btn-primary">Luo käyttäjätunnus</button>
+            </form>
+        </div>
+    </body>
+</html>
