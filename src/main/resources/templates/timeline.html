@@ -5,9 +5,13 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="container">Käyttäjätunnuksen luonti onnistui.</div>
+        <div th:replace="fragments/layout :: header(title=${title})">
+            Header
+        </div>
+        
+        <div class="container">Tähän tulee aikajana.</div>
         <div class="container">
-            <a th:href="@{/login}">Kirjaudu sisään</a>
+            <a th:href="@{/logout}">Kirjaudu ulos</a>
         </div>
     </body>
 </html>
