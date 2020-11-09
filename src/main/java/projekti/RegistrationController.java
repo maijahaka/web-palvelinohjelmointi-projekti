@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class AccountController {
+public class RegistrationController {
     
     @Autowired
     private Environment env;

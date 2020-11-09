@@ -1,15 +1,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/layout :: head(title=${user.name})" lang="fi">
+    <head th:replace="fragments/layout :: head(title=${profile.name})" lang="fi">
         <title>Title</title>
         <meta charset="UTF-8">
     </head>
     <body>
-        <div th:replace="fragments/layout :: navbar">
+        <div th:replace="fragments/layout :: navbar(activeUrlIdentifier=${activeUrlIdentifier})">
             Navbar
         </div>
         
-        <div th:replace="fragments/layout :: header(header=${user.name})">
+        <div th:replace="fragments/layout :: header(header=${profile.name})">
             Header
         </div> 
        
