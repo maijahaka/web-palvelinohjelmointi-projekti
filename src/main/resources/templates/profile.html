@@ -27,6 +27,19 @@
                     </small>
                 </form>
             </div>
+            
+            <div th:if="${profile.picture != null}" class="container">
+                <form action="#" method="POST" th:action="@{/pictures/change}" enctype="multipart/form-data" role="form">
+                    <input type="file" class="form-control-file" name="changefile" id="changefile"/>
+                    <button type="submit" class="btn btn-primary btn-sm">Vaihda profiilikuva</button>
+                    <small id="profilePictureHelpBlock" class="form-text text-muted">
+                        Kuvan tulee olla JPEG-muotoinen ja kooltaan korkeintaan 1 MB.
+                    </small>
+                </form>
+                <form action="#" method="POST" th:action="@{/pictures/delete}" role="form">
+                    <button type="submit" class="btn btn-secondary btn-sm">Poista profiilikuva</button>
+                </form>
+            </div>
         </div>    
        
         <div class="container">Tähän tulee profiilisivu</div>

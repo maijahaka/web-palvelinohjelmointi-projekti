@@ -47,4 +47,36 @@ public class PictureController {
         return "redirect:/users/" + user.getUrlIdentifier();
     }
     
+    @Transactional
+    @PostMapping("/pictures/change")
+    public String change(@RequestParam("changefile") MultipartFile file) throws IOException  {
+        Account user = accountService.getActiveUser();
+        Long oldPictureId = user.getPicture().getId();
+        
+        if (file.getContentType().equals("image/jpeg")) {
+        
+            Picture picture = new Picture();
+            picture.setContent(file.getBytes());
+            
+            picture = pictureRepository.save(picture);
+            
+            user.setPicture(picture);
+            accountService.save(user);
+            pictureRepository.deleteById(oldPictureId);
+        }
+        
+        return "redirect:/users/" + user.getUrlIdentifier();
+    }
+    
+    @PostMapping("/pictures/delete")
+    public String delete() {
+        Account user = accountService.getActiveUser();
+        Long pictureId = user.getPicture().getId();
+        
+        user.setPicture(null);
+        
+        pictureRepository.deleteById(pictureId);
+        return "redirect:/users/" + user.getUrlIdentifier();
+    }
+    
 }
