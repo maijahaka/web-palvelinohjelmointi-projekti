@@ -17,8 +17,8 @@ public class ProfileController {
     
     @GetMapping("/users/{urlIdentifier}")
     public String showProfile(Model model, @PathVariable String urlIdentifier) {
-        Account user = accountService.getActiveUser();
-        model.addAttribute("activeUrlIdentifier", user.getUrlIdentifier());
+        Account activeUser = accountService.getActiveUser();
+        model.addAttribute("activeUser", activeUser);
         
         Account profile = accountService.findByUrlIdentifier(urlIdentifier);
         model.addAttribute("profile", profile);

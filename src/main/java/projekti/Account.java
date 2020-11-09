@@ -1,8 +1,10 @@
 
 package projekti;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -31,5 +33,8 @@ public class Account extends AbstractPersistable<Long> {
     @Size(min=3, max=20)
     @Column(unique=true)
     private String urlIdentifier;
+    
+    @OneToOne
+    private Picture picture;
     
 }

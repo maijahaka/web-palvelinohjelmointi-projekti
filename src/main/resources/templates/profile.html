@@ -5,13 +5,29 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div th:replace="fragments/layout :: navbar(activeUrlIdentifier=${activeUrlIdentifier})">
+        <div th:replace="fragments/layout :: navbar(activeUrlIdentifier=${activeUser.urlIdentifier})">
             Navbar
         </div>
         
         <div th:replace="fragments/layout :: header(header=${profile.name})">
             Header
-        </div> 
+        </div>
+                
+        <div th:if="${profile.picture != null}" class="container">
+            <img th:src="@{/pictures/{userId}/content(userId=${profile.id})}" class="img-fluid rounded d-block" alt="Profiilikuva" />
+        </div>
+        
+        <div th:if="${profile.id == activeUser.id}">
+            <div th:if="${profile.picture == null}" class="container">
+                <form action="#" method="POST" th:action="@{/pictures}" enctype="multipart/form-data" role="form">
+                    <input type="file" class="form-control-file" name="file" id="file"/>
+                    <button type="submit" class="btn btn-primary btn-sm">Lisää profiilikuva</button>
+                    <small id="profilePictureHelpBlock" class="form-text text-muted">
+                        Kuvan tulee olla JPEG-muotoinen.
+                    </small>
+                </form>
+            </div>
+        </div>    
        
         <div class="container">Tähän tulee profiilisivu</div>
     </body>

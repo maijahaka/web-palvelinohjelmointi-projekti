@@ -28,7 +28,7 @@ public class AccountServiceTest {
     
     @Test
     public void AccountIsSaved() {
-        Account account = new Account("testuser", "Test Name", "testpassword", "testuser");
+        Account account = new Account("testuser", "Test Name", "testpassword", "testuser", null);
         accountService.save(account);
         assertEquals(1, accountRepository.count());
     }
@@ -41,7 +41,7 @@ public class AccountServiceTest {
         String urlIdentifier = "testuser";
         
         for (int i = 1; i < 4; i++) {
-            Account account = new Account(username+i, name+i, password+i, urlIdentifier + i);
+            Account account = new Account(username+i, name+i, password+i, urlIdentifier + i, null);
             accountService.save(account);
         }
         

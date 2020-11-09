@@ -13,6 +13,10 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
     
+    public Account getOne(Long id) {
+        return accountRepository.getOne(id);
+    }
+    
     public Account findByUsername(String username) {
         return accountRepository.findByUsername(username);
     }
