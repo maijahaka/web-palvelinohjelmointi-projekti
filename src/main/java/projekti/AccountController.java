@@ -27,7 +27,6 @@ public class AccountController {
     
     @GetMapping("/registration")
     public String registrationForm(Model model, @ModelAttribute Account account) {
-        model.addAttribute("title", "Luo käyttäjätunnus");
         String url = env.getProperty("app.url");
         model.addAttribute("url", url);
         return "registration";

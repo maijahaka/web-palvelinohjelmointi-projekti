@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/layout :: head(title='Aikajana')" lang="fi">
+    <head th:replace="fragments/layout :: head(title=${user.name})" lang="fi">
         <title>Title</title>
         <meta charset="UTF-8">
     </head>
@@ -9,10 +9,10 @@
             Navbar
         </div>
         
-        <div th:replace="fragments/layout :: header(header='Aikajana')">
+        <div th:replace="fragments/layout :: header(header=${user.name})">
             Header
-        </div>
-        
-        <div class="container">Tähän tulee aikajana.</div>
+        </div> 
+       
+        <div class="container">Tähän tulee profiilisivu</div>
     </body>
 </html>

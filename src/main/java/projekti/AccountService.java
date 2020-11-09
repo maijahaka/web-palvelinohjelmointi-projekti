@@ -11,6 +11,10 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
     
+    public Account findByUsername(String username) {
+        return accountRepository.findByUsername(username);
+    }
+    
     public Account save(Account account) {
         return accountRepository.save(account);
     }
