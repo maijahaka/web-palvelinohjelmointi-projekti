@@ -21,7 +21,7 @@ public class ProfileController {
         model.addAttribute("activeUrlIdentifier", user.getUrlIdentifier());
         
         Account profile = accountService.findByUrlIdentifier(urlIdentifier);
-        model.addAttribute("profile", profile)
+        model.addAttribute("profile", profile);
         return "profile";
     }
     
